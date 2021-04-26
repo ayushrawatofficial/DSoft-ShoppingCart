@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<div style="margin-top:80px;">
+  <router-outlet></router-outlet>
+</div>
+
+
+  <button [ngClass]="{'show-scroll': showScroll}" (click)="scrollToTop()" class="scroll-to-top bg-dark ">
+    Scroll To Top
+</button>
+
+<app-footer></app-footer>

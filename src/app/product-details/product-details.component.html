@@ -1,0 +1,25 @@
+<a routerLink="/">Go back</a>
+
+<div class="alert alert-primary" role="alert" *ngIf="isVisible">
+    {{alertText}}
+</div>
+
+<div *ngIf="isNotLoggedIn">
+    <app-login></app-login>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="card col-md-12">
+            <div class="card-body" *ngFor="let product of productList">
+                <h5 class="card-title">{{ product.name}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <p class="card-text">Rs. {{product.price}}</p>
+                <p class="card-text">{{product.valid_upto}}</p>
+                <button type="button" class="btn btn-primary" (click)="addCart()">Add Cart</button>
+
+            </div>
+        </div>
+    </div>
+</div>

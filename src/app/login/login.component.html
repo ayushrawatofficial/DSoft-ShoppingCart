@@ -1,0 +1,59 @@
+<div style="margin-top:80px;">
+    <p> {{responseText}}</p>
+
+    <form [formGroup]="doLoginForm" (ngSubmit)="sendOTP()" *ngIf="!isVerifyOTP">
+
+
+        <div class="container">
+
+            <label for="mobile_number"><b>Mobile Number</b></label>
+
+            <input type="text" placeholder="Enter Mobile number" formControlName="mobile_number">
+            <span class="error"
+                [hidden]="doLoginForm.controls.mobile_number.valid || doLoginForm.controls.mobile_number.pristine">
+                <p *ngIf="doLoginForm.controls.mobile_number.errors?.required">
+                    Mobile Number Required
+                </p>
+
+            </span>
+
+            <div class="align-centre">
+                <button type="submit">Send OTP</button>
+
+
+            </div>
+        </div>
+
+
+    </form>
+
+
+    <form [formGroup]="verifyOtpForm" (ngSubmit)="verifyOTP()" *ngIf="isVerifyOTP">
+
+
+        <div class="container">
+
+            <label for="otp"><b>OTP</b></label>
+
+            <input type="text" placeholder="Enter OTP" formControlName="otp">
+            <span class="error" [hidden]="verifyOtpForm.controls.otp.valid || verifyOtpForm.controls.otp.pristine">
+                <p *ngIf="verifyOtpForm.controls.otp.errors?.required">
+                    OTP Required
+                </p>
+
+            </span>
+
+
+
+            <div class="align-centre">
+                <button type="submit">Verify OTP</button>
+           </div>
+           <div class="align-centre">
+            <button type="button" (click)="reEnter()">Re-Enter Mobile Number</button>
+       </div>
+        </div>
+
+    </form>
+
+
+</div>
