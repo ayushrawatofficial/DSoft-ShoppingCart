@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/login/services/login.service';
 import { ProductService } from '../../services/product.service';
 // import { NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
@@ -15,7 +16,7 @@ user:String | null='';
 isLoggingIn=false;
 
 
-  constructor(private productService : ProductService, private router:Router) { 
+  constructor(private productService : ProductService, private router:Router, private loginService : LoginService) { 
 
     this.isLoggingIn=false;
 
@@ -28,9 +29,7 @@ isLoggingIn=false;
       if(status[1]=="LoggedIn" && status[0]){
         this.isLoggingIn=false;   
       }
-      // else{
-      //   this.isLoggingIn=true; 
-      // }
+
     });
     
   }
@@ -45,7 +44,8 @@ isLoggingIn=false;
 
   openLogin(){
     this.isLoggingIn=true;    
-    
+    this.loginService.openLogin().then(result=>{    }),
+    ()=>{}
    }
 
    onLogout() {
@@ -56,16 +56,6 @@ isLoggingIn=false;
 }
 
    ngOnDestroy(){
-    // this.isLoggingIn=false;
    }
 
-  // openModal() {
-  //   const modalRef = this.modalService.open(FormModalComponent);
-  //   modalRef.componentInstance.id = 10;
-  //   modalRef.result.then((result) => {
-  //     console.log(result);
-  //   }).catch((error) => {
-  //     console.log(error);
-  //   });
-  // }
 }

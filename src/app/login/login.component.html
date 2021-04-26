@@ -1,4 +1,11 @@
-<div style="margin-top:80px;">
+
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Login</h4>
+    <button type="button" class="close" aria-label="Close" (click)="loginModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
     <p> {{responseText}}</p>
 
     <form [formGroup]="doLoginForm" (ngSubmit)="sendOTP()" *ngIf="!isVerifyOTP">
@@ -54,6 +61,7 @@
         </div>
 
     </form>
-
-
-</div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="loginModal.close('Save click')">Close</button>
+  </div>

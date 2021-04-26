@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { ProductService } from '../shared/services/product.service';
+
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
   responseText='';
 
 
-  constructor(private productService: ProductService, private router : Router) { }
+  constructor(private productService: ProductService, private router : Router, public loginModal : NgbActiveModal) { }
 
   ngOnInit(): void {
     this.doLoginForm = new FormGroup({
@@ -65,6 +67,7 @@ export class LoginComponent implements OnInit {
      this.productService.updateLogin(this.verifyOtpForm.value.mobile_number,"LoggedIn");
      localStorage.setItem('currentUser', this.verifyOtpForm.value.mobile_number);
      localStorage.setItem('LoggedIn',"true");
+     this.loginModal.close();
     }
     else {
     this.responseText=res.message;
