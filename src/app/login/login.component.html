@@ -6,7 +6,9 @@
     </button>
   </div>
   <div class="modal-body">
-    <p> {{responseText}}</p>
+    <div class="alert alert-primary" role="alert" *ngIf="isVisible">
+        {{responseText}}
+    </div>
 
     <form [formGroup]="doLoginForm" (ngSubmit)="sendOTP()" *ngIf="!isVerifyOTP">
 
@@ -25,7 +27,7 @@
             </span>
 
             <div class="align-centre">
-                <button type="submit">Send OTP</button>
+                <button type="submit" class="btn btn-primary btn-block align-centre">Send OTP</button>
 
 
             </div>
@@ -53,15 +55,15 @@
 
 
             <div class="align-centre">
-                <button type="submit">Verify OTP</button>
+                <button type="submit" class="btn btn-primary btn-block align-centre">Verify OTP</button>
            </div>
            <div class="align-centre">
-            <button type="button" (click)="reEnter()">Re-Enter Mobile Number</button>
+            <button class="btn btn-primary btn-block align-centre" (click)="reEnter()">Re-Enter Mobile Number</button>
        </div>
         </div>
 
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="loginModal.close('Save click')">Close</button>
+    <button class="btn btn-danger btn-block align-centre" (click)="loginModal.close('Save click')">Close</button>
   </div>

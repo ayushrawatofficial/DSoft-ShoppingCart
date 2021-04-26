@@ -12,7 +12,7 @@ import { ProductService } from '../shared/services/product.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  
+  currentPage: number = 1;
   productList: Product[] = [];
   productsSubscription: Subscription | any;
   getProductData =`{

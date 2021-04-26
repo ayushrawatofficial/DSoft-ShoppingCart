@@ -2,7 +2,7 @@
    
     <div class="col">
       <div class="row" >
-        <div class="col-12 col-md-6 col-lg-3" *ngFor="let product of productList">
+        <div class="col-12 col-md-6 col-lg-3" *ngFor="let product of productList | paginate: { itemsPerPage: 4, currentPage: currentPage }">
           <div class="card">
             <img class="card-img-top" src="https://dummyimage.com/300x220/55595c/fff"
             alt="Card image cap">
@@ -13,16 +13,17 @@
               <p class="card-text">{{product.valid_upto}}</p>
               <div class="row">
                 <div class="col">
-                  <p class="btn btn-danger btn-block align-centre">Rs {{product.price}}</p>
+                  <p class="btn btn-danger btn-block align-centre">Rs. {{product.price}}</p>
                 </div>
-                <!-- <div class="col">
-                  <a class="btn btn-success btn-block" (click)="addToCartHandler(product)">Add to cart</a>
-                </div> -->
+           
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="container">
+    <pagination-controls (pageChange)="currentPage = $event" class="float-right "></pagination-controls>
+  </div>
   </div>
   

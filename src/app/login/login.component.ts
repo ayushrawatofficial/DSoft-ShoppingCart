@@ -14,6 +14,7 @@ import { ProductService } from '../shared/services/product.service';
 export class LoginComponent implements OnInit {
 
   title = 'Login';
+  isVisible=false;
   isVerifyOTP = false;
   authSubscription: Subscription | any;
   otpSubscription: Subscription | any;
@@ -53,6 +54,8 @@ export class LoginComponent implements OnInit {
       .subscribe((res: any) => {
         if(res.code==200 && res.message=="Otp send successfully."){
         this.responseText=res.message;
+        this.isVisible = true;
+      setTimeout(() => this.isVisible = false, 5000)
       }
      
       });
@@ -64,6 +67,8 @@ export class LoginComponent implements OnInit {
      .subscribe((res: any) => {
      if(res.code==200){
      this.responseText=res.message;
+     this.isVisible = true;
+      setTimeout(() => this.isVisible = false, 5000)
      this.productService.updateLogin(this.verifyOtpForm.value.mobile_number,"LoggedIn");
      localStorage.setItem('currentUser', this.verifyOtpForm.value.mobile_number);
      localStorage.setItem('LoggedIn',"true");
@@ -71,6 +76,8 @@ export class LoginComponent implements OnInit {
     }
     else {
     this.responseText=res.message;
+    this.isVisible = true;
+      setTimeout(() => this.isVisible = false, 5000)
     }
     });
 
@@ -78,6 +85,7 @@ export class LoginComponent implements OnInit {
 
   reEnter(){
     this.isVerifyOTP = false;
+    this.isVisible = false;
   }
 
 }
